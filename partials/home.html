@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="catSearch col-sm-4">
+      <label for="category">Search by category: </label>
+        <select name="category" id="category" ng-model="obj.catSearch">
+          <option ng-repeat="category in obj.categories" value="{{category}}">{{category}}</option>
+        </select>
+    </div>
+    <div class="nameSearch col-sm-4">
+      <label for="nameSearch">Search by name: </label>
+        <input type="text" name="nameSearch" id="nameSearch" ng-model="obj.nameSearch" />
+    </div>
+    <a class="col-sm-2.5 btn btn-danger pull-right" href="#/bag">Checkout | Bag: {{obj.contents}}</a>
+  </div>
+</div>
+<div class="container-fluid">
+  <table class="table-bordered">
+    <thead>
+      <th>Tea</th>
+      <th>Information</th>
+      <th>
+          Sort By Price:
+          <select name="priceSort" ng-model="obj.priceSort">
+            <option value="price">Low-to-High</option>
+            <option value="-price">High-to-Low</option>
+          </select>
+      </th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="tea in obj.data | orderBy: obj.priceSort | filter: {name: obj.nameSearch, categories: obj.catSearch}">
+          <td><img src="{{tea.imageUrl}}" alt="no image available" /></td>
+          <td>
+              <h2 class="col-6-sm">{{tea.name}}</h2>
+            <label>Price: </label>
+            {{tea.price | decimal | currency}} <br>
+            <label>Caffeine Scale: </label>
+            {{tea.caffeineScale}} <br>
+            <label>Ingredients: </label>
+            {{tea.ingredients}} <br>
+            <label>Rating: </label>
+            {{tea.rating}} <br>
+            <label>In Stock? </label>
+            {{tea.inStock | inStock}} <br>
+            <label>Categories: </label>
+            <ul>
+              <li ng-repeat="category in tea.categories">{{category}}</li>
+            </ul>
+          </td>
+          <td>
+              <h2>Quantity: </h2>
+              <select ng-model="tea.quant">
+                <option ng-repeat="num in obj.quantNums" value={{num}}>{{num}}</option>
+              </select>
+              <button class="btn btn-warning" ng-click="obj.addToBag(tea)">{{tea.buttonTxt || "Add To Bag"}}</button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

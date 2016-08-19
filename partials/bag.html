@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>My Shopping Bag</h1>
+    </div>
+    <div class="col-sm-6">
+      <h1 class="pull-right">Order total: {{bag.total | currency}}</h1>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <table class="table-bordered">
+    <thead>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Sub-total</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="tea in bag.contents">
+        <td>
+          <h2 class="col-6-sm">{{tea.name}}</h2>
+          <img src="{{tea.imageUrl}}" alt="no image available" />
+          <label>Caffeine Scale: </label>
+          {{tea.caffeineScale}} <br>
+          <label>Ingredients: </label>
+          {{tea.ingredients}} <br>
+          <label>Rating: </label>
+          {{tea.rating}} <br>
+        </td>
+        <td>
+          <span ng-show="tea.showQuant">{{tea.quant}}</span>
+          <input ng-model="tea.quant" type="number" ng-show="!tea.showQuant">
+        </td>
+        <td>{{(tea.price | decimal) * tea.quant | currency}}</td>
+        <td>
+          <button ng-click="bag.toggleQuant(tea)" ng-show="tea.showQuant" class="btn btn-warning">Edit</button>
+          <button ng-click="bag.toggleQuant(tea)" ng-show="!tea.showQuant" class="btn btn-warning">Save</button>
+          <button ng-click="bag.removeItem(tea)" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

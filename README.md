@@ -21,7 +21,7 @@ Checkout Page:
 √ - Includes a table of all products in the shopping bag (name, image, caffeine scale, ingredients, rating), the quantity, sub-total, and edit and remove buttons.
 √ - The edit button turns the quantity into a number field, hides the edit button, and shows a save button.
 √ - The save button hides the number field and the save button, and shows the edit button.
-- The remove button removes the item from the shopping bag.
+√ - The remove button removes the item from the shopping bag.
 
 - on home page, tea rows are constructed with a directive
 - on bag page, tea rows are constructed with a directive

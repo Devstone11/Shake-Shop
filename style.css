@@ -1,0 +1,35 @@
+#guarantee {
+  text-align: center;
+  font-size: 1.5vw;
+  background-color: #FD7D55;
+  color: white;
+}
+
+#page-title {
+  color: #FD7D55;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.checkout {
+  margin-bottom: 1vw;
+}
+
+th, td {
+  padding: 1vw;
+  vertical-align: top;
+}
+
+.quantSelect {
+  margin-top: 25px;
+  margin-left: 5px;
+}
+
+td div button {
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.quantInput {
+  width: 60px;
+}

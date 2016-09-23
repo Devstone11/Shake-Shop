@@ -1,0 +1,15 @@
+<h3 class="col-6-sm">{{shake.name}}</h3>
+<label>Price: </label>
+{{shake.price | decimal | currency}} <br>
+<label>Sweetness Scale: </label>
+{{shake.sweetScale}} <br>
+<label>Ingredients: </label>
+{{shake.ingredients}} <br>
+<label>Rating: </label>
+{{shake.rating}} <br>
+<label>In Stock? </label>
+{{shake.inStock | inStock}} <br>
+<label>Categories: </label>
+<ul>
+  <li ng-repeat="category in shake.categories">{{category}}</li>
+</ul>

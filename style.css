@@ -1,23 +1,59 @@
+body {
+  background-color: #085060;
+  color: #D9A31A;
+}
+
 #guarantee {
   text-align: center;
   font-size: 1.5vw;
-  background-color: #FD7D55;
-  color: white;
+  color: #085060;
+  background-color: #D9A31A
 }
 
 #page-title {
-  color: #FD7D55;
   font-style: italic;
   font-weight: bold;
+  font-family: Milkshake;
+  font-size: 5vw;
+}
+
+nav div {
+  background-color: #218AAC;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #D9A31A;
+}
+
+nav.navbar {
+  border: none;
+  border-radius: 10px;
 }
 
 .checkout {
   margin-bottom: 1vw;
 }
 
+.btn-danger {
+  background-color: #E1311A;
+}
+
+.btn-warning {
+  background-color: #D9A31A;
+}
+
+thead {
+  border: none !important;
+}
+
+.table-bordered {
+  border: none;
+}
+
 th, td {
   padding: 1vw;
   vertical-align: top;
+  border-color: #218AAC !important;
 }
 
 .quantSelect {
@@ -32,4 +68,9 @@ td div button {
 
 .quantInput {
   width: 60px;
+}
+
+img {
+  width: 235px;
+  height: 219px;
 }

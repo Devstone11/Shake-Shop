@@ -1,6 +1,5 @@
 app.factory('HomeService', function($http) {
   return {
-    test: "hello from the factory",
     getData: $http.get('../data.json').then(function(data) {
       return data.data
     }),
@@ -8,8 +7,8 @@ app.factory('HomeService', function($http) {
     getCategories: $http.get('../data.json').then(function(data) {
       var allCats = [];
       var catArr = data.data
-        .map(function(tea) {
-          return tea.categories;
+        .map(function(shake) {
+          return shake.categories;
         })
         .forEach(function(arr) {
           arr.forEach(function(cat) {
@@ -27,33 +26,33 @@ app.factory('BagService', function($http) {
   return {
     contents: [],
     total: 0.00,
-    addContents: function(teaObj) {
-      teaObj.showQuant = true;
-      if (!teaObj.quant) {
-        teaObj.quant = 1;
+    addContents: function(shakeObj) {
+      shakeObj.showQuant = true;
+      if (!shakeObj.quant) {
+        shakeObj.quant = 1;
       }
-      var namesInContents = this.contents.map(function(tea) {
-        return tea.name;
+      var namesInContents = this.contents.map(function(shake) {
+        return shake.name;
       });
-      existingIndex = namesInContents.indexOf(teaObj.name);
+      existingIndex = namesInContents.indexOf(shakeObj.name);
       if (existingIndex < 0) {
-        this.contents.push(teaObj);
+        this.contents.push(shakeObj);
       } else {
-        this.contents[existingIndex].quant = teaObj.quant;
+        this.contents[existingIndex].quant = shakeObj.quant;
       }
     },
     numItems: function() {
       if (this.contents.length > 0) {
-        return "(" + this.sumArray(this.contents.map(function(teaObj) {
-            return teaObj.quant;
+        return "(" + this.sumArray(this.contents.map(function(shakeObj) {
+            return shakeObj.quant;
           })) + ")";
       } else {
         return "Empty!"
       }
     },
     subtotals: function() {
-      return this.contents.map(function(teaObj) {
-        return teaObj.price / 100 * teaObj.quant;
+      return this.contents.map(function(shakeObj) {
+        return shakeObj.price / 100 * shakeObj.quant;
       })
     },
     calcTotal: function() {
@@ -68,14 +67,14 @@ app.factory('BagService', function($http) {
         return 0.00;
       }
     },
-    toggleQuant: function(tea) {
+    toggleQuant: function(shake) {
       this.calcTotal();
-      tea.showQuant = !tea.showQuant;
+      shake.showQuant = !shake.showQuant;
     },
-    removeItem: function(tea) {
-      tea.buttonTxt = null;
+    removeItem: function(shake) {
+      shake.buttonTxt = null;
       this.contents = this.contents.filter(function(item) {
-          return item._id !== tea._id;
+          return item._id !== shake._id;
       })
       this.calcTotal();
     }

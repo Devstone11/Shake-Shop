@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-6">
-      <h2>My Shopping Bag</h2>
+      <h2>My Shopping Cart</h2>
     </div>
     <div class="col-sm-6">
       <h2 class="pull-right">Order total: {{bag.total | currency}}</h2>
@@ -16,28 +16,28 @@
       <th>Sub-total</th>
     </thead>
     <tbody>
-      <tr ng-repeat="tea in bag.contents">
+      <tr ng-repeat="shake in bag.contents">
         <td>
-          <h3 class="col-6-sm">{{tea.name}}</h3>
+          <h3 class="col-6-sm">{{shake.name}}</h3>
           <div class="row">
-            <img src="{{tea.imageUrl}}" alt="no image available" />
+            <img src="{{shake.imageUrl}}" alt="no image available" style="margin-left: 15px;"/>
           </div>
           <label>Caffeine Scale: </label>
-          {{tea.caffeineScale}} <br>
+          {{shake.caffeineScale}} <br>
           <label>Ingredients: </label>
-          {{tea.ingredients}} <br>
+          {{shake.ingredients}} <br>
           <label>Rating: </label>
-          {{tea.rating}} <br>
+          {{shake.rating}} <br>
         </td>
         <td>
-          <span ng-show="tea.showQuant">{{tea.quant}}</span>
-          <input class="quantInput" ng-model="tea.quant" type="number" ng-show="!tea.showQuant">
+          <span ng-show="shake.showQuant">{{shake.quant}}</span>
+          <input class="quantInput" ng-model="shake.quant" type="number" ng-show="!shake.showQuant">
         </td>
-        <td>{{(tea.price | decimal) * tea.quant | currency}}</td>
+        <td>{{(shake.price | decimal) * shake.quant | currency}}</td>
         <td>
-          <button ng-click="bag.toggleQuant(tea)" ng-show="tea.showQuant" class="btn btn-warning">Edit</button>
-          <button ng-click="bag.toggleQuant(tea)" ng-show="!tea.showQuant" class="btn btn-warning">Save</button>
-          <button ng-click="bag.removeItem(tea)" class="btn btn-danger">Remove</button>
+          <button ng-click="bag.toggleQuant(shake)" ng-show="shake.showQuant" class="btn btn-warning">Edit</button>
+          <button ng-click="bag.toggleQuant(shake)" ng-show="!shake.showQuant" class="btn btn-warning">Save</button>
+          <button ng-click="bag.removeItem(shake)" class="btn btn-danger">Remove</button>
         </td>
       </tr>
     </tbody>

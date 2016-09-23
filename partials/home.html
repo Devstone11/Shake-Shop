@@ -13,10 +13,9 @@
     <a class="col-sm-2.5 btn btn-danger pull-right checkout" href="#/bag">Checkout | Bag: {{obj.contents}}</a>
   </div>
 </div>
-<!-- <div class="container-fluid"> -->
   <table class="table-bordered container">
     <thead class="row">
-      <th class="col-sm-2">Tea</th>
+      <th class="col-sm-2">Shakes</th>
       <th class="col-sm-6">Information</th>
       <th class="col-sm-4">
         Sort By Price:
@@ -27,35 +26,20 @@
       </th>
     </thead>
     <tbody>
-      <tr ng-repeat="tea in obj.data | orderBy: obj.priceSort | filter: {name: obj.nameSearch, categories: obj.catSearch}">
-        <td><img src="{{tea.imageUrl}}" alt="no image available" /></td>
+      <tr ng-repeat="shake in obj.data | orderBy: obj.priceSort | filter: {name: obj.nameSearch, categories: obj.catSearch}">
+        <td><img src="{{shake.imageUrl}}" alt="no image available" /></td>
         <td>
-          <h3 class="col-6-sm">{{tea.name}}</h3>
-          <label>Price: </label>
-          {{tea.price | decimal | currency}} <br>
-          <label>Caffeine Scale: </label>
-          {{tea.caffeineScale}} <br>
-          <label>Ingredients: </label>
-          {{tea.ingredients}} <br>
-          <label>Rating: </label>
-          {{tea.rating}} <br>
-          <label>In Stock? </label>
-          {{tea.inStock | inStock}} <br>
-          <label>Categories: </label>
-          <ul>
-            <li ng-repeat="category in tea.categories">{{category}}</li>
-          </ul>
+          <shake-card></shake-card>
         </td>
         <td>
           <div class="row">
             <h3 class="col-sm-5">Quantity: </h3>
-            <select  class="col-sm-2 quantSelect" ng-model="tea.quant" style="display:inline-block;">
+            <select  class="col-sm-2 quantSelect" ng-model="shake.quant" style="display:inline-block;">
               <option ng-repeat="num in obj.quantNums" value={{num}}>{{num}}</option>
             </select>
-            <button class="btn btn-warning pull-right" ng-click="obj.addToBag(tea)">{{tea.buttonTxt || "Add To Bag"}}</button>
+            <button class="btn btn-warning pull-right" ng-click="obj.addToBag(shake)">{{shake.buttonTxt || "Add To Bag"}}</button>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
-<!-- </div> -->
